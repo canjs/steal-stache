@@ -22,8 +22,23 @@ function translate(load) {
 
 	var intermediateAndImports = getIntermediateAndImports(load.source);
 
+	var commonDependencies = Promise.all([
+		this.normalize("can-view-import", module.id),
+		this.normalize("can-stache-bindings", module.id)
+	]);
+
+
 	// Add bundle configuration for these dynamic imports
-	return addBundles(intermediateAndImports.dynamicImports, load.name).then(function(){
+	return Promise.all([
+		addBundles(intermediateAndImports.dynamicImports, load.name),
+		commonDependencies
+	]).then(function(results){
+		var imports = results[1];
+
+		// In add in the common dependencies of every stache file
+		intermediateAndImports.imports.unshift.apply(
+			intermediateAndImports.imports, imports
+		);
 
 		intermediateAndImports.imports.unshift("can-stache/src/mustache_core");
 		intermediateAndImports.imports.unshift("can-stache");
@@ -31,7 +46,6 @@ function translate(load) {
 
 		return template(intermediateAndImports.imports,
 										intermediateAndImports.intermediate);
-
 	});
 }
 
