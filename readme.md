@@ -6,53 +6,60 @@ Load can-stache templates with StealJS
 
 ## Usage
 
-### ES6 use
+This package will configure Steal so that you can import templates. Start by installing with NPM.
 
-With StealJS, you can import this module directly in a template that is autorendered:
-
-```js
-import plugin from 'steal-stache';
+```shell
+npm install steal-stache --save
 ```
 
-### CommonJS use
-
-Use `require` to load `steal-stache` and everything else
-needed to create a template that uses `steal-stache`:
-
-```js
-var plugin = require("steal-stache");
-```
-
-## AMD use
-
-Configure the `can` and `jquery` paths and the `steal-stache` package:
+And then assuming you are using NPM with Steal like:
 
 ```html
-<script src="require.js"></script>
-<script>
-	require.config({
-	    paths: {
-	        "jquery": "node_modules/jquery/dist/jquery",
-	        "can": "node_modules/canjs/dist/amd/can"
-	    },
-	    packages: [{
-		    	name: 'steal-stache',
-		    	location: 'node_modules/steal-stache/dist/amd',
-		    	main: 'lib/steal-stache'
-	    }]
-	});
-	require(["main-amd"], function(){});
-</script>
+<script src="node_modules/steal/steal.js"></script>
 ```
 
-### Standalone use
+All you have to do is import the template:
 
-Load the `global` version of the plugin:
-
-```html
-<script src='./node_modules/steal-stache/dist/global/steal-stache.js'></script>
+```js
+import template from "./main.stache";
 ```
 
+
+- <code>[__steal-stache__ Object](#steal-stache-object)</code>
+  - <code>[STACHE_MODULE_NAME!steal-stache](#stache_module_namesteal-stache)</code>
+
+## API
+
+
+## <code>__steal-stache__ Object</code>
+
+A [StealJS](http://stealjs.com) extension that allows stache templates as dependencies.
+
+
+### <code>STACHE_MODULE_NAME!steal-stache</code>
+
+
+Import a [can-stache stache] module in your code and use it to render.
+
+```js
+var template = require("./main.stache");
+var Map = require("can-map");
+
+var map = new Map();
+var frag = template(map);
+
+// frag is a live-bound DocumentFragment
+```
+
+
+1. __STACHE_MODULE_NAME__ <code>{moduleName}</code>:
+  The module name of a stache template. This
+  will typically be something like `templates/main.stache`.
+  
+
+- __returns__ <code>{can-stache.renderer}</code>:
+  A renderer function that will render the template into a document fragment.
+  
 ## Contributing
 
 ### Making a Build
