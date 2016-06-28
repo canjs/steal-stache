@@ -1,6 +1,6 @@
 {
   "name": "steal-stache",
-  "version": "3.0.0-pre.2",
+  "version": "3.0.0-pre.3",
   "description": "Load can-stache templates with StealJS",
   "homepage": "http://canjs.com",
   "repository": {
@@ -91,7 +91,9 @@
       "ignore": "node_modules/**/*"
     },
     "readme": {
-      "apis": ["steal-stache"]
+      "apis": [
+        "steal-stache"
+      ]
     },
     "parent": "steal-stache"
   }
