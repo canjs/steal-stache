@@ -21,7 +21,7 @@ var frag = template(map);
   will typically be something like `templates/main.stache`.
 
   @return {can-stache.renderer} A renderer function that will render the template into a document fragment.
-  
+
 @body
 
 ## Use
@@ -35,7 +35,7 @@ todosStache([{name: "dishes"}]) //-> <documentFragment>
 
 ## Specifying Dependencies
 
-This plugin allows [can-view-import &lt;can-import&gt;] elements that specify 
+This plugin allows [can-view-import <can-import>] elements that specify 
 template dependencies:
 
 
