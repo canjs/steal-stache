@@ -1,6 +1,6 @@
 {
   "name": "steal-stache",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Load can-stache templates with StealJS",
   "homepage": "http://canjs.com",
   "repository": {
