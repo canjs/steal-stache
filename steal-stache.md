@@ -1,5 +1,6 @@
 @module {{}} steal-stache
 @parent can-ecosystem
+@package ./package.json
 
 A [StealJS](http://stealjs.com) extension that allows stache templates as dependencies.
 
@@ -35,7 +36,7 @@ todosStache([{name: "dishes"}]) //-> <documentFragment>
 
 ## Specifying Dependencies
 
-This plugin allows [can-view-import <can-import>] elements that specify 
+This plugin allows [can-view-import <can-import>] elements that specify
 template dependencies:
 
 
