@@ -1,6 +1,8 @@
+[![Build Status](https://travis-ci.org/canjs/steal-stache.png?branch=master)](https://travis-ci.org/canjs/steal-stache)
+
 # steal-stache
 
-[![Build Status](https://travis-ci.org/canjs/steal-stache.png?branch=master)](https://travis-ci.org/canjs/steal-stache)
+
 
 Load can-stache templates with StealJS
 
@@ -55,11 +57,11 @@ var frag = template(map);
 1. __STACHE_MODULE_NAME__ <code>{moduleName}</code>:
   The module name of a stache template. This
   will typically be something like `templates/main.stache`.
-  
+
 
 - __returns__ <code>{can-stache.renderer}</code>:
   A renderer function that will render the template into a document fragment.
-  
+
 ## Contributing
 
 ### Making a Build
