@@ -54,7 +54,7 @@
     "can-stache": "^3.0.13",
     "can-stache-bindings": "^3.0.5",
     "can-view-import": "^3.0.3",
-    "jquery": "~3.1.1"
+    "jquery": "2.x - 3.x"
   },
   "devDependencies": {
     "can-view-nodelist": "^3.0.2",
