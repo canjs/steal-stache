@@ -27,7 +27,31 @@ var frag = template(map);
 
 ## Use
 
-With [StealJS](http://stealjs.com) used from `node_modules`, steal-stache will configure Steal so stache modules can be loaded like:
+With [StealJS](https://stealjs.com) being used from `node_modules` like this:
+
+```html
+<script src="node_modules/steal/steal.js"></script>
+```
+
+Start by installing `steal-stache` with npm:
+
+```shell
+npm install steal-stache --save
+```
+
+Then add the plugins configuration to your `package.json`:
+
+```json
+{
+  ...
+  "steal": {
+    ...
+    "plugins": ["steal-stache"]
+  }
+}
+```
+
+Now you can load [can-stache] modules like this:
 
 ```js
 import todosStache from "todos.stache"
