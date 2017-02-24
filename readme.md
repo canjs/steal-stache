@@ -14,6 +14,18 @@ This package will configure Steal so that you can import templates. Start by ins
 npm install steal-stache --save
 ```
 
+Next, let Steal know that it needs to load the plugin using the `steal` property in the project's package.json.
+
+```json
+{
+	"steal": {
+		"plugins": [
+			"steal-stache"
+		]
+	}
+}
+```
+
 And then assuming you are using NPM with Steal like:
 
 ```html
