@@ -2,6 +2,8 @@
 
 # steal-stache
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/canjs/steal-stache.svg)](https://greenkeeper.io/)
+
 
 
 Load can-stache templates with StealJS
