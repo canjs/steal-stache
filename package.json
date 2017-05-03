@@ -59,14 +59,14 @@
   "devDependencies": {
     "can-view-nodelist": "^3.0.2",
     "bit-docs": "0.0.7",
-    "done-serve": "^0.2.5",
-    "donejs-cli": "^0.9.5",
-    "generator-donejs": "^0.9.6",
+    "done-serve": "^1.2.0",
+    "donejs-cli": "^1.0.1",
+    "generator-donejs": "^1.0.5",
     "jshint": "^2.9.4",
     "steal": "^1.0.5",
     "steal-qunit": "^1.0.0",
     "steal-tools": "^1.0.0",
-    "testee": "^0.4.0"
+    "testee": "^0.5.0"
   },
   "bit-docs": {
     "dependencies": {
