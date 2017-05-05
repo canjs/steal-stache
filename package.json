@@ -27,7 +27,7 @@
     "document": "bit-docs",
     "develop": "done-serve --static --develop --port 8080"
   },
-  "main": "dist/cjs/steal-stache",
+  "main": "steal-stache.js",
   "keywords": [
     "canjs",
     "stealjs",
