@@ -56,8 +56,8 @@
     "jquery": "2.x - 3.x"
   },
   "devDependencies": {
-    "can-view-nodelist": "^3.0.2",
     "bit-docs": "0.0.7",
+    "can-view-nodelist": "^3.1.0-pre.0",
     "done-serve": "^0.2.5",
     "donejs-cli": "^0.9.5",
     "generator-donejs": "^0.9.6",
