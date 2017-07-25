@@ -4,7 +4,7 @@ before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 script:
-  - "firefox-bin -v"
+  - "/home/travis/firefox-latest/firefox/firefox -v"
   - "DEBUG=launchpad:* node node_modules/testee/bin/testee test/test.html --browsers firefox"
 addons:
   firefox: latest
