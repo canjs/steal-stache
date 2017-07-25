@@ -5,6 +5,6 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 script:
   - "firefox-bin -v"
-  - "npm test"
+  - "DEBUG=launchpad:* node node_modules/testee/bin/testee test/test.html --browsers firefox"
 addons:
   firefox: latest
