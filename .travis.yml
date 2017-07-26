@@ -7,4 +7,4 @@ script:
   - "/home/travis/firefox-latest/firefox/firefox -v"
   - "DEBUG=launchpad:* node node_modules/testee/bin/testee test/test.html --browsers firefox"
 addons:
-  firefox: latest
+  firefox: "51.0"
