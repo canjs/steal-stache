@@ -50,14 +50,14 @@
     }
   },
   "dependencies": {
-    "can-stache": "^3.1.0-pre.4",
-    "can-stache-bindings": "^3.2.0-pre.1",
-    "can-view-import": "^3.1.0-pre.0",
+    "can-stache": "^3.1.0",
+    "can-stache-bindings": "^3.2.0",
+    "can-view-import": "^3.1.0",
     "jquery": "2.x - 3.x"
   },
   "devDependencies": {
     "bit-docs": "0.0.7",
-    "can-view-nodelist": "^3.1.0-pre.0",
+    "can-view-nodelist": "^3.1.0",
     "done-serve": "^0.2.5",
     "donejs-cli": "^0.9.5",
     "generator-donejs": "^0.9.6",
