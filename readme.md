@@ -1,95 +1,28 @@
-[![Build Status](https://travis-ci.org/canjs/steal-stache.png?branch=master)](https://travis-ci.org/canjs/steal-stache)
-
 # steal-stache
 
-
+[![Join the chat at https://gitter.im/canjs/canjs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/canjs/canjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/canjs/steal-stache/blob/master/LICENSE.md)
+[![npm version](https://badge.fury.io/js/steal-stache.svg)](https://www.npmjs.com/package/steal-stache)
+[![Travis build status](https://travis-ci.org/canjs/steal-stache.svg?branch=master)](https://travis-ci.org/canjs/steal-stache)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/canjs/steal-stache?branch=master&svg=true)](https://ci.appveyor.com/project/matthewp/steal-stache)
+[![Coverage status](https://coveralls.io/repos/github/canjs/steal-stache/badge.svg?branch=master)](https://coveralls.io/github/canjs/steal-stache?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/canjs/steal-stache.svg)](https://greenkeeper.io/)
 
 Load can-stache templates with StealJS
 
-## Usage
+## Documentation
 
-This package will configure Steal so that you can import templates. Start by installing with NPM.
+Read the [steal-stache API docs on CanJS.com](https://canjs.com/doc/steal-stache.html).
 
-```shell
-npm install steal-stache --save
-```
+## Changelog
 
-Next, let Steal know that it needs to load the plugin using the `steal` property in the project's package.json.
-
-```json
-{
-	"steal": {
-		"plugins": [
-			"steal-stache"
-		]
-	}
-}
-```
-
-And then assuming you are using NPM with Steal like:
-
-```html
-<script src="node_modules/steal/steal.js"></script>
-```
-
-All you have to do is import the template:
-
-```js
-import template from "./main.stache";
-```
-
-
-- <code>[__steal-stache__ Object](#steal-stache-object)</code>
-  - <code>[STACHE_MODULE_NAME!steal-stache](#stache_module_namesteal-stache)</code>
-
-## API
-
-
-## <code>__steal-stache__ Object</code>
-
-A [StealJS](http://stealjs.com) extension that allows stache templates as dependencies.
-
-
-### <code>STACHE_MODULE_NAME!steal-stache</code>
-
-
-Import a [can-stache stache] module in your code and use it to render.
-
-```js
-var template = require("./main.stache");
-var Map = require("can-map");
-
-var map = new Map();
-var frag = template(map);
-
-// frag is a live-bound DocumentFragment
-```
-
-
-1. __STACHE_MODULE_NAME__ <code>{moduleName}</code>:
-  The module name of a stache template. This
-  will typically be something like `templates/main.stache`.
-
-
-- __returns__ <code>{can-stache.renderer}</code>:
-  A renderer function that will render the template into a document fragment.
+See the [latest releases on GitHub](https://github.com/canjs/steal-stache/releases).
 
 ## Contributing
 
-### Making a Build
+The [contribution guide](https://github.com/canjs/steal-stache/blob/master/CONTRIBUTING.md) has information on getting help, reporting bugs, developing locally, and more.
 
-To make a build of the distributables into `dist/` in the cloned repository run
+## License
 
-```
-npm install
-node build
-```
+[MIT](https://github.com/canjs/steal-stache/blob/master/LICENSE.md)
 
-### Running the tests
-
-Tests can run in the browser by opening a webserver and visiting the `test.html` page.
-Automated tests that run the tests from the command line in Firefox can be run with
-
-```
-npm test
-```
