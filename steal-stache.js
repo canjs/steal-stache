@@ -2,12 +2,15 @@
 var getIntermediateAndImports = require("can-stache/src/intermediate_and_imports");
 var addBundles = require("./add-bundles");
 
-function template(imports, intermediate){
+function template(imports, intermediate, filename){
 	imports = JSON.stringify(imports);
 	intermediate = JSON.stringify(intermediate);
 
 	return "define("+imports+",function(module, stache, mustacheCore){\n" +
-		"\tvar renderer = stache(" + intermediate + ");\n" +
+		(filename ?
+			"\tvar renderer = stache(" + JSON.stringify(filename) + ", " + intermediate + ");\n" :
+			"\tvar renderer = stache(" + intermediate + ");\n"
+		) +
 		"\treturn function(scope, options, nodeList){\n" +
 		"\t\tvar moduleOptions = { module: module };\n" +
 		"\t\tif(!(options instanceof mustacheCore.Options)) {\n" +
@@ -17,6 +20,15 @@ function template(imports, intermediate){
 		"\t};\n" +
 	"});";
 }
+
+//!steal-remove-start
+function getFilename(name) {
+	var hash = name.indexOf('#');
+	var bang = name.indexOf('!');
+
+	return name.slice(hash < bang ? (hash + 1) : 0, bang);
+}
+//!steal-remove-end
 
 function translate(load) {
 
@@ -44,12 +56,14 @@ function translate(load) {
 		intermediateAndImports.imports.unshift("can-stache");
 		intermediateAndImports.imports.unshift("module");
 
-		return template(intermediateAndImports.imports,
-										intermediateAndImports.intermediate);
+		var filename;
+		//!steal-remove-start
+		filename = getFilename(load.name);
+		//!steal-remove-end
+
+		return template(intermediateAndImports.imports, intermediateAndImports.intermediate, filename);
 	});
 }
-
-
 
 module.exports = {
 	translate: translate
