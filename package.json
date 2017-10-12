@@ -1,6 +1,6 @@
 {
   "name": "steal-stache",
-  "version": "3.0.5",
+  "version": "3.1.2",
   "description": "Load can-stache templates with StealJS",
   "homepage": "http://canjs.com",
   "repository": {
@@ -13,21 +13,19 @@
     "url": "http://bitovi.com"
   },
   "scripts": {
-    "preversion": "npm test && npm run build",
-    "version": "git commit -am \"Update dist for release\" && git checkout -b release && git add -f dist/",
+    "preversion": "npm test",
+    "version": "git commit -am \"Update dist for release\" && git checkout -b release",
     "postversion": "git push --tags && git checkout master && git branch -D release && git push",
     "testee": "testee test/test.html --browsers firefox",
     "test": "npm run jshint && npm run testee",
     "jshint": "jshint ./*.js --config",
-    "release:pre": "npm version prerelease && npm publish",
+    "release:pre": "npm version prerelease && npm publish --tag=pre",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
     "release:major": "npm version major && npm publish",
-    "build": "node build.js",
-    "document": "bit-docs",
     "develop": "done-serve --static --develop --port 8080"
   },
-  "main": "dist/cjs/steal-stache",
+  "main": "steal-stache.js",
   "keywords": [
     "canjs",
     "stealjs",
@@ -51,39 +49,18 @@
     }
   },
   "dependencies": {
-    "can-stache": "^3.0.13",
-    "can-stache-bindings": "^3.0.5",
-    "can-view-import": "^3.0.3",
+    "can-stache": "^3.10.0",
+    "can-stache-bindings": "^3.2.0",
+    "can-view-import": "^3.1.0",
     "jquery": "2.x - 3.x"
   },
   "devDependencies": {
-    "can-view-nodelist": "^3.0.2",
     "bit-docs": "0.0.7",
-    "done-serve": "^1.2.0",
-    "donejs-cli": "^1.0.1",
-    "generator-donejs": "^1.0.5",
+    "can-view-nodelist": "^3.1.0",
     "jshint": "^2.9.4",
-    "steal": "^1.0.5",
+    "steal": "^1.5.11",
     "steal-qunit": "^1.0.0",
     "steal-tools": "^1.0.0",
-    "testee": "^0.5.0"
-  },
-  "bit-docs": {
-    "dependencies": {
-      "bit-docs-glob-finder": "^0.0.5",
-      "bit-docs-dev": "^0.0.3",
-      "bit-docs-js": "^0.0.3",
-      "bit-docs-generate-readme": "^0.0.8"
-    },
-    "glob": {
-      "pattern": "**/*.{js,md}",
-      "ignore": "node_modules/**/*"
-    },
-    "readme": {
-      "apis": [
-        "steal-stache"
-      ]
-    },
-    "parent": "steal-stache"
+    "testee": "^0.7.0"
   }
 }
