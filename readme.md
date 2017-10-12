@@ -1,14 +1,14 @@
 # steal-stache
 
 [![Join the chat at https://gitter.im/canjs/canjs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/canjs/canjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/canjs/steal-stache/blob/master/LICENSE.md)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canjs/steal-stache/blob/master/LICENSE.md)
 [![npm version](https://badge.fury.io/js/steal-stache.svg)](https://www.npmjs.com/package/steal-stache)
 [![Travis build status](https://travis-ci.org/canjs/steal-stache.svg?branch=master)](https://travis-ci.org/canjs/steal-stache)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/canjs/steal-stache?branch=master&svg=true)](https://ci.appveyor.com/project/matthewp/steal-stache)
 [![Coverage status](https://coveralls.io/repos/github/canjs/steal-stache/badge.svg?branch=master)](https://coveralls.io/github/canjs/steal-stache?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/canjs/steal-stache.svg)](https://greenkeeper.io/)
 
-Load can-stache templates with StealJS
+Load can-stache templates with [StealJS](https://stealjs.com/).
 
 ## Documentation
 
