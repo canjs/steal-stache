@@ -22,8 +22,7 @@
     "release:pre": "npm version prerelease && npm publish --tag=pre",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
-    "release:major": "npm version major && npm publish",
-    "develop": "done-serve --static --develop --port 8080"
+    "release:major": "npm version major && npm publish"
   },
   "main": "steal-stache.js",
   "keywords": [
@@ -39,8 +38,6 @@
     "npmIgnore": [
       "documentjs",
       "testee",
-      "generator-donejs",
-      "donejs-cli",
       "steal-tools"
     ],
     "npmAlgorithm": "flat",
