@@ -32,7 +32,12 @@ function getFilename(name) {
 
 function translate(load) {
 
-	var intermediateAndImports = getIntermediateAndImports(load.source);
+	var filename;
+	//!steal-remove-start
+	filename = getFilename(load.name);
+	//!steal-remove-end
+
+	var intermediateAndImports = getIntermediateAndImports(filename, load.source);
 
 	var commonDependencies = Promise.all([
 		this.normalize("can-view-import", module.id),
@@ -55,11 +60,6 @@ function translate(load) {
 		intermediateAndImports.imports.unshift("can-stache/src/mustache_core");
 		intermediateAndImports.imports.unshift("can-stache");
 		intermediateAndImports.imports.unshift("module");
-
-		var filename;
-		//!steal-remove-start
-		filename = getFilename(load.name);
-		//!steal-remove-end
 
 		return template(intermediateAndImports.imports, intermediateAndImports.intermediate, filename);
 	});

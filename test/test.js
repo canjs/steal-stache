@@ -3,6 +3,7 @@ var nodeLists = require("can-view-nodelist");
 var stache = require("can-stache");
 var QUnit = require("steal-qunit");
 var loader = require("@loader");
+var testHelpers = require("can-test-helpers");
 var clone = require("steal-clone")
 
 QUnit.module("steal-stache");
@@ -31,16 +32,17 @@ QUnit.test("can-import works", function(){
 	});
 });
 
-QUnit.test("can-import works and calls stache() with the filename", function(){
+QUnit.test("can-import is provided the filename", function(){
 	stop();
 	clone({
-		"can-stache": {
-			default: function fakeStache(filename, template) {
-				equal(filename, "test/tests/foo.stache", "calls with filename");
+		"can-view-parser": {
+			default: function fakeStache(template, helpers) {
+				equal(helpers.filename, "test/tests/foo.stache", "calls with filename");
 			},
 		},
 	})["import"]("test/tests/foo.stache")
-	.then(function() {
+	.then(function(template) {
+		template();
 		start();
 	});
 });
