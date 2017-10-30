@@ -1,5 +1,6 @@
 @module {{}} steal-stache
-@parent can-ecosystem
+@parent can-views
+@collection can-ecosystem
 @package ./package.json
 
 A [StealJS](http://stealjs.com) extension that allows stache templates as dependencies.
