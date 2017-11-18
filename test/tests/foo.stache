@@ -1,2 +1,2 @@
-<can-import from="test/tests/bar" {^value}="*bar" />
-<span>{{*bar}}</span>
+<can-import from="test/tests/bar" value:to="scope.vars.bar" />
+<span>{{scope.vars.bar}}</span>
