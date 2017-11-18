@@ -46,9 +46,9 @@
     }
   },
   "dependencies": {
-    "can-stache": "^3.10.0",
-    "can-stache-bindings": "^3.2.0",
-    "can-view-import": "^3.1.0",
+    "can-stache": "^4.0.0-pre.14",
+    "can-stache-bindings": "^4.0.0-pre.13",
+    "can-view-import": "^4.0.0-pre.2",
     "jquery": "2.x - 3.x"
   },
   "devDependencies": {
