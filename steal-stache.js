@@ -12,11 +12,8 @@ function template(imports, intermediate, filename){
 			"\tvar renderer = stache(" + intermediate + ");\n"
 		) +
 		"\treturn function(scope, options, nodeList){\n" +
-		"\t\tvar moduleOptions = { module: module };\n" +
-		"\t\tif(!(options instanceof mustacheCore.Options)) {\n" +
-		"\t\t\toptions = new mustacheCore.Options(options || {});\n" +
-		"\t\t}\n" +
-		"\t\treturn renderer(scope, options.add(moduleOptions), nodeList);\n" +
+		"\t\tvar moduleOptions = Object.assign( { module: module }, options );\n" +
+		"\t\treturn renderer(scope, moduleOptions, nodeList);\n" +
 		"\t};\n" +
 	"});";
 }
