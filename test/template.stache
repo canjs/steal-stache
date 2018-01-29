@@ -1,1 +1,1 @@
-{{importTestHelper}}
+{{importTestHelper()}}

@@ -45,15 +45,14 @@
     }
   },
   "dependencies": {
-    "can-stache": "^4.0.0-pre.21",
-    "can-stache-bindings": "^4.0.0-pre.16",
-    "can-view-import": "^4.0.0-pre.3",
-    "jquery": "2.x - 3.x"
+    "can-stache": "^4.0.0",
+    "can-stache-bindings": "^4.0.0",
+    "can-view-import": "^4.0.0"
   },
   "devDependencies": {
     "bit-docs": "0.0.7",
     "can-test-helpers": "^1.1.0",
-    "can-view-nodelist": "^3.1.0",
+    "can-view-nodelist": "^4.0.0",
     "jshint": "^2.9.4",
     "steal": "^1.5.11",
     "steal-qunit": "^1.0.0",
