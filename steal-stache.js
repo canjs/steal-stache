@@ -1,6 +1,7 @@
 "format cjs";
 var getIntermediateAndImports = require("can-stache/src/intermediate_and_imports");
 var addBundles = require("./add-bundles");
+var loader = require("@loader");
 
 function template(imports, intermediate, filename){
 	imports = JSON.stringify(imports);
@@ -41,6 +42,16 @@ function translate(load) {
 		this.normalize("can-stache-bindings", module.id)
 	]);
 
+	// Register dynamic imports for the slim loader config
+	var localLoader = loader.localLoader || loader;
+	if (localLoader.slimConfig) {
+		localLoader.slimConfig.needsDynamicLoader = true;
+
+		var push = Array.prototype.push;
+		var toMap = localLoader.slimConfig.toMap;
+		push.apply(toMap, intermediateAndImports.imports);
+		push.apply(toMap, intermediateAndImports.dynamicImports);
+	}
 
 	// Add bundle configuration for these dynamic imports
 	return Promise.all([
@@ -58,7 +69,11 @@ function translate(load) {
 		intermediateAndImports.imports.unshift("can-stache");
 		intermediateAndImports.imports.unshift("module");
 
-		return template(intermediateAndImports.imports, intermediateAndImports.intermediate, filename);
+		return template(
+			intermediateAndImports.imports,
+			intermediateAndImports.intermediate,
+			filename
+		);
 	});
 }
 
