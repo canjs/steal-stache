@@ -46,15 +46,17 @@
   },
   "dependencies": {
     "can-stache": "^4.0.0",
+    "can-stache-ast": "^1.0.0",
     "can-stache-bindings": "^4.0.0",
-    "can-view-import": "^4.0.0"
+    "can-view-import": "^4.0.0",
+    "steal-config-utils": "^1.0.0"
   },
   "devDependencies": {
     "bit-docs": "0.0.7",
     "can-test-helpers": "^1.1.0",
     "can-view-nodelist": "^4.0.0",
     "jshint": "^2.9.4",
-    "steal": "^1.5.11",
+    "steal": "^1.7.0",
     "steal-qunit": "^1.0.0",
     "steal-tools": "^1.0.0",
     "testee": "^0.7.0"

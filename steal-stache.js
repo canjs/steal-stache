@@ -1,7 +1,8 @@
 "format cjs";
-var getIntermediateAndImports = require("can-stache/src/intermediate_and_imports");
+var parse = require("can-stache-ast").parse;
 var addBundles = require("./add-bundles");
 var loader = require("@loader");
+var addImportSpecifiers = require("steal-config-utils/import-specifiers").addImportSpecifiers;
 
 function template(imports, intermediate, filename){
 	imports = JSON.stringify(imports);
@@ -35,7 +36,7 @@ function translate(load) {
 	filename = getFilename(load.name);
 	//!steal-remove-end
 
-	var intermediateAndImports = getIntermediateAndImports(filename, load.source);
+	var ast = parse(filename, load.source);
 
 	var commonDependencies = Promise.all([
 		this.normalize("can-view-import", module.id),
@@ -49,29 +50,32 @@ function translate(load) {
 
 		var push = Array.prototype.push;
 		var toMap = localLoader.slimConfig.toMap;
-		push.apply(toMap, intermediateAndImports.imports);
-		push.apply(toMap, intermediateAndImports.dynamicImports);
+		push.apply(toMap, ast.imports);
+		push.apply(toMap, ast.dynamicImports);
 	}
+
+	// Add import specifier line numbers for debugging
+	addImportSpecifiers(load, ast);
 
 	// Add bundle configuration for these dynamic imports
 	return Promise.all([
-		addBundles(intermediateAndImports.dynamicImports, load.name),
+		addBundles(ast.dynamicImports, load.name),
 		commonDependencies
 	]).then(function(results){
 		var imports = results[1];
 
 		// In add in the common dependencies of every stache file
-		intermediateAndImports.imports.unshift.apply(
-			intermediateAndImports.imports, imports
+		ast.imports.unshift.apply(
+			ast.imports, imports
 		);
 
-		intermediateAndImports.imports.unshift("can-stache/src/mustache_core");
-		intermediateAndImports.imports.unshift("can-stache");
-		intermediateAndImports.imports.unshift("module");
+		ast.imports.unshift("can-stache/src/mustache_core");
+		ast.imports.unshift("can-stache");
+		ast.imports.unshift("module");
 
 		return template(
-			intermediateAndImports.imports,
-			intermediateAndImports.intermediate,
+			ast.imports,
+			ast.intermediate,
 			filename
 		);
 	});

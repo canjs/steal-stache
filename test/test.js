@@ -32,6 +32,16 @@ QUnit.test("can-import works", function(){
 	});
 });
 
+QUnit.test("error messages includes the source", function(){
+	stop();
+	loader["import"]("test/tests/oops.stache")
+	.then(null, function(err){
+		ok(/can-import/.test(err.message), "can-import code is in the message");
+		ok(/oops.stache/.test(err.stack), "the importing file is in the stack");
+		start();
+	});
+});
+
 QUnit.test("can-import is provided the filename", function(){
 	stop();
 	clone({
