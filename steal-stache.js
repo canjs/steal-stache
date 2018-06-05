@@ -14,7 +14,8 @@ function template(imports, intermediate, filename){
 			"\tvar renderer = stache(" + intermediate + ");\n"
 		) +
 		"\treturn function(scope, options, nodeList){\n" +
-		"\t\tvar moduleOptions = Object.assign( { module: module }, options );\n" +
+		"\t\tvar moduleOptions = Object.assign({}, options);\n" +
+		"\t\tmoduleOptions.helpers = Object.assign({ module: module }, moduleOptions.helpers);\n" +
 		"\t\treturn renderer(scope, moduleOptions, nodeList);\n" +
 		"\t};\n" +
 	"});";

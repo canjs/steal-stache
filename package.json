@@ -17,7 +17,7 @@
     "postpublish": "git push --tags && git push",
     "testee": "testee test/test.html --browsers firefox",
     "test": "npm run jshint && npm run testee",
-    "jshint": "jshint ./*.js --config",
+    "jshint": "jshint ./*.js test/ --config",
     "release:pre": "npm version prerelease && npm publish --tag=pre",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
@@ -54,6 +54,7 @@
   "devDependencies": {
     "bit-docs": "0.0.7",
     "can-test-helpers": "^1.1.0",
+    "can-view-callbacks": "^4.1.1",
     "can-view-nodelist": "^4.0.0",
     "jshint": "^2.9.4",
     "steal": "^1.7.0",
