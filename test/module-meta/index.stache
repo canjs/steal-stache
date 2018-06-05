@@ -1,2 +1,1 @@
-<fake-import from="test/module-meta" value:to="scope.vars.foo" />
-<span>{{scope.vars.foo}}</span>
+<fake-import from="test/module-meta" />
