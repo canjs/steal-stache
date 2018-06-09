@@ -98,3 +98,18 @@ QUnit.test("module info is set when 'options.helpers' exists", function(assert) 
 		done();
 	});
 });
+
+QUnit.test("Can call helpers passed into the renderer", function(assert){
+	var done = assert.async();
+	loader["import"]("test/tests/helper.stache").then(function(renderer){
+
+		var frag = renderer({}, {
+			test: function(){
+				return "works";
+			}
+		});
+
+		assert.equal(frag.firstChild.firstChild.nodeValue, "works");
+		done();
+	});
+});

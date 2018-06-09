@@ -15,7 +15,11 @@ function template(imports, intermediate, filename){
 		) +
 		"\treturn function(scope, options, nodeList){\n" +
 		"\t\tvar moduleOptions = Object.assign({}, options);\n" +
-		"\t\tmoduleOptions.helpers = Object.assign({ module: module }, moduleOptions.helpers);\n" +
+		"\t\tif(moduleOptions.helpers) {\n" +
+		"\t\t\tmoduleOptions.helpers = Object.assign({ module: module }, moduleOptions.helpers);\n" +
+		"\t\t} else {\n" +
+		"\t\t\tmoduleOptions.module = module;\n" +
+		"\t\t}\n" +
 		"\t\treturn renderer(scope, moduleOptions, nodeList);\n" +
 		"\t};\n" +
 	"});";
