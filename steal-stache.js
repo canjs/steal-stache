@@ -14,9 +14,10 @@ function template(imports, intermediate, filename){
 			"\tvar renderer = stache(" + intermediate + ");\n"
 		) +
 		"\treturn function(scope, options, nodeList){\n" +
-		"\t\tvar moduleOptions = Object.assign({}, options);\n" +
+		"\tvar assign = function (d, s) { for (var prop in s) { var desc = Object.getOwnPropertyDescriptor(d,prop); if(!desc || desc.writable !== false){ d[prop] = s[prop]; } } return d; };" +
+		"\t\tvar moduleOptions = assign({}, options);\n" +
 		"\t\tif(moduleOptions.helpers) {\n" +
-		"\t\t\tmoduleOptions.helpers = Object.assign({ module: module }, moduleOptions.helpers);\n" +
+		"\t\t\tmoduleOptions.helpers = assign({ module: module }, moduleOptions.helpers);\n" +
 		"\t\t} else {\n" +
 		"\t\t\tmoduleOptions.module = module;\n" +
 		"\t\t}\n" +
