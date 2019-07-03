@@ -14,14 +14,14 @@ function template(imports, intermediate, filename){
 			"\tvar renderer = stache(" + JSON.stringify(filename) + ", " + intermediate + ");\n" :
 			"\tvar renderer = stache(" + intermediate + ");\n"
 		) +
-    "\tvar tagImports = Array.prototype.slice.call(arguments, 6);\n" +
+		"\tvar tagImports = Array.prototype.slice.call(arguments, 6);\n" +
 		"\treturn function(scope, options, nodeList){\n" +
 		"\t\tvar moduleOptions = assign({}, options);\n" +
-    "\t\tvar tagImportMap = " + tagImportNames + ".reduce((map, name, index) => {\n" +
-    "\t\t\tmap[name] = tagImports[index];\n" +
-    "\t\t\treturn map;\n" +
-    "\t\t}, {});\n" +
-    "\n"+
+		"\t\tvar tagImportMap = " + tagImportNames + ".reduce((map, name, index) => {\n" +
+		"\t\t\tmap[name] = tagImports[index];\n" +
+		"\t\t\treturn map;\n" +
+		"\t\t}, {});\n" +
+		"\n"+
 		"\t\tif(moduleOptions.helpers) {\n" +
 		"\t\t\tmoduleOptions.helpers = assign({ module: module, tagImportMap: tagImportMap }, moduleOptions.helpers);\n" +
 		"\t\t} else {\n" +
