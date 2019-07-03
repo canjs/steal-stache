@@ -8,15 +8,15 @@ function template(imports, intermediate, filename){
 	imports = JSON.stringify(imports);
 	intermediate = JSON.stringify(intermediate);
 
-	return "define("+imports+",function(module, stache, mustacheCore){\n" +
+	return "define("+imports+",function(module, assign, stache, mustacheCore){ \n" +
 		(filename ?
 			"\tvar renderer = stache(" + JSON.stringify(filename) + ", " + intermediate + ");\n" :
 			"\tvar renderer = stache(" + intermediate + ");\n"
 		) +
 		"\treturn function(scope, options, nodeList){\n" +
-		"\t\tvar moduleOptions = Object.assign({}, options);\n" +
+		"\t\tvar moduleOptions = assign({}, options);\n" +
 		"\t\tif(moduleOptions.helpers) {\n" +
-		"\t\t\tmoduleOptions.helpers = Object.assign({ module: module }, moduleOptions.helpers);\n" +
+		"\t\t\tmoduleOptions.helpers = assign({ module: module }, moduleOptions.helpers);\n" +
 		"\t\t} else {\n" +
 		"\t\t\tmoduleOptions.module = module;\n" +
 		"\t\t}\n" +
@@ -76,6 +76,7 @@ function translate(load) {
 
 		ast.imports.unshift("can-stache/src/mustache_core");
 		ast.imports.unshift("can-stache");
+		ast.imports.unshift("can-assign");
 		ast.imports.unshift("module");
 
 		return template(

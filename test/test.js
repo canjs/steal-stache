@@ -113,3 +113,26 @@ QUnit.test("Can call helpers passed into the renderer", function(assert){
 		done();
 	});
 });
+
+QUnit.test("pass can-assign for IE11 compatibility (#81)", function(assert){
+	var done = assert.async();
+	var oldAssign = window.Object.assign;
+	window.Object.assign = null;
+
+	loader["import"]("test/tests/helper.stache")
+	.then(function(renderer){
+
+		var frag = renderer({}, {
+			test: function(){
+				return "works without Object.assign";
+			}
+		});
+
+		window.Object.assign = oldAssign;
+		assert.equal(frag.firstChild.firstChild.nodeValue, "works without Object.assign");
+		done();
+	})
+	.catch(function (err) {
+		console.log(err);
+	});
+});
