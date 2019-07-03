@@ -38,6 +38,19 @@ QUnit.test("can-import works", function(assert) {
 	});
 });
 
+QUnit.test("`can-import`ed modules are available synchronously", function(assert){
+	var done = assert.async();
+
+	loader["import"]("test/tests/baz.stache").then(function(template) {
+		template({
+			test: function(value) {
+				assert.equal(value, "works", "Initial render occurs with can-import already completed.");
+				done();
+			}
+		});
+	});
+});
+
 QUnit.test("error messages includes the source", function(assert) {
 	var done = assert.async();
 

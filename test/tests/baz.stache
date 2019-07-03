@@ -1,0 +1,2 @@
+<can-import from='test/tests/bar' export:to="scope.vars.bar" />
+{{ test(scope.vars.bar) }}
