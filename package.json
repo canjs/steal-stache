@@ -45,6 +45,7 @@
     }
   },
   "dependencies": {
+    "can-assign": "^1.0.0",
     "can-stache": "^4.0.0",
     "can-stache-ast": "^1.0.0",
     "can-stache-bindings": "^4.0.0",

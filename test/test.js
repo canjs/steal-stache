@@ -127,7 +127,7 @@ QUnit.test("inline assign call works in IE11 (#81)", function(assert){
 			}
 		});
 
-		assert.equal(frag.firstChild.firstChild.nodeValue, "works");
+		assert.equal(frag.firstChild.firstChild.nodeValue, "works without Object.assign");
 		window.Object.assign = oldAssign
 		done();
 	});
