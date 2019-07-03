@@ -5,7 +5,7 @@ var loader = require("@loader");
 var addImportSpecifiers = require("steal-config-utils/import-specifiers").addImportSpecifiers;
 
 function template(imports, intermediate, filename){
-	var tagImportNames = JSON.stringify(imports.slice(5));
+	var tagImportNames = JSON.stringify(imports.slice(6));
 	imports = JSON.stringify(imports);
 	intermediate = JSON.stringify(intermediate);
 
@@ -15,7 +15,7 @@ function template(imports, intermediate, filename){
 			"\tvar renderer = stache(" + JSON.stringify(filename) + ", " + intermediate + ");\n" :
 			"\tvar renderer = stache(" + intermediate + ");\n"
 		) +
-    "\tvar tagImports = arguments.slice(6);\n"
+    "\tvar tagImports = Array.prototype.slice.call(arguments, 6);\n" +
 		"\treturn function(scope, options, nodeList){\n" +
 		"\t\tvar moduleOptions = assign({}, options);\n" +
     "\t\tvar tagImportMap = " + tagImportNames + ".reduce((map, name, index) => {\n" +
