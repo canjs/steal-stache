@@ -116,8 +116,8 @@ QUnit.test("Can call helpers passed into the renderer", function(assert){
 
 QUnit.test("inline assign call works in IE11 (#81)", function(assert){
 	var done = assert.async();
-	var oldAssign = window.Object.assign
-	window.Object.assign = null
+	var oldAssign = window.Object.assign;
+	window.Object.assign = null;
 
 	loader["import"]("test/tests/helper.stache").then(function(renderer){
 
@@ -128,7 +128,7 @@ QUnit.test("inline assign call works in IE11 (#81)", function(assert){
 		});
 
 		assert.equal(frag.firstChild.firstChild.nodeValue, "works without Object.assign");
-		window.Object.assign = oldAssign
+		window.Object.assign = oldAssign;
 		done();
 	});
 });
