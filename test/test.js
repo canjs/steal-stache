@@ -73,7 +73,7 @@ QUnit.test("module info is set when 'options' is missing", function(assert) {
 	var done = assert.async(2);
 
 	tag("fake-import", function fakeImport(el, tagData) {
-		var m = tagData.scope.get("scope.helpers.module");
+		var m = tagData.scope.get("module");
 		assert.ok(m.id.includes("test/module-meta/index"));
 		done();
 	});
@@ -88,7 +88,7 @@ QUnit.test("module info is set when 'options.helpers' exists", function(assert) 
 	var done = assert.async(2);
 
 	tag("fake-import", function fakeImport(el, tagData) {
-		var m = tagData.scope.get("scope.helpers.module");
+		var m = tagData.scope.get("module");
 		assert.ok(m.id.includes("test/module-meta/index"));
 		done();
 	});
