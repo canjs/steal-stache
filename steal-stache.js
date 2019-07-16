@@ -8,7 +8,8 @@ function template(imports, intermediate, filename){
 	imports = JSON.stringify(imports);
 	intermediate = JSON.stringify(intermediate);
 
-	return "define("+imports+",function(module, assign, stache, mustacheCore){ \n" +
+	return "define("+imports+",function(module, assign, stache, mustacheCore, viewImport, bindings){ \n" +
+		"\tstache.addBindings(bindings);\n"+
 		(filename ?
 			"\tvar renderer = stache(" + JSON.stringify(filename) + ", " + intermediate + ");\n" :
 			"\tvar renderer = stache(" + intermediate + ");\n"

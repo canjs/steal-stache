@@ -1,5 +1,4 @@
 var template = require("./template.stache!");
-var nodeLists = require("can-view-nodelist");
 var stache = require("can-stache");
 var QUnit = require("steal-qunit");
 var loader = require("@loader");
@@ -7,18 +6,6 @@ var clone = require("steal-clone");
 var tag = require("can-view-callbacks").tag;
 
 QUnit.module("steal-stache");
-
-QUnit.test("node-lists work", function(assert) {
-	var nl = nodeLists.register([], undefined, true);
-	stache.registerHelper("importTestHelper", function(options) {
-		assert.equal(
-			options.nodeList,
-			nl.replacements[0],
-			"correct node list reference"
-		);
-	});
-	template({}, {}, nl);
-});
 
 QUnit.test("can-import works", function(assert) {
 	var done = assert.async();
