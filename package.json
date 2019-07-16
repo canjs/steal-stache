@@ -1,6 +1,6 @@
 {
   "name": "steal-stache",
-  "version": "4.1.5",
+  "version": "5.0.0-pre.0",
   "description": "Load can-stache templates with StealJS",
   "homepage": "http://canjs.com",
   "repository": {
@@ -46,17 +46,15 @@
   },
   "dependencies": {
     "can-assign": "^1.0.0",
-    "can-stache": "^4.0.0",
+    "can-stache": "canjs/can-stache#major",
     "can-stache-ast": "^1.0.0",
-    "can-stache-bindings": "^4.0.0",
-    "can-view-import": "^4.2.2",
+    "can-stache-bindings": "canjs/can-stache-bindings#major",
+    "can-view-import": "canjs/can-view-import#major",
     "steal-config-utils": "^1.0.0"
   },
   "devDependencies": {
-    "bit-docs": "0.0.7",
     "can-test-helpers": "^1.1.0",
-    "can-view-callbacks": "^4.1.1",
-    "can-view-nodelist": "^4.0.0",
+    "can-view-callbacks": "canjs/can-view-callbacks#major",
     "jshint": "^2.9.4",
     "steal": "^1.7.0",
     "steal-qunit": "^2.0.0",
