@@ -25,13 +25,15 @@ QUnit.test("can-import works", function(assert) {
 	});
 });
 
-QUnit.test("`can-import`ed modules are available synchronously", function(assert){
+QUnit.test("`can-import`ed modules are available synchronously, and in a LetContext", function(assert){
 	var done = assert.async();
 
 	loader["import"]("test/tests/baz.stache").then(function(template) {
 		template({
-			test: function(value) {
+			test: function(value, scope) {
 				assert.equal(value, "works", "Initial render occurs with can-import already completed.");
+				assert.ok(scope._meta.variable, "Bottom scope is a LetContext.");
+				assert.equal(scope._context._data.bar, "works", "`bar` variable is in the LetContext.");
 				done();
 			}
 		});
