@@ -38,6 +38,21 @@ QUnit.test("can-import works", function(assert) {
 	});
 });
 
+QUnit.test("`can-import`ed modules are available synchronously, and in a LetContext", function(assert){
+	var done = assert.async();
+
+	loader["import"]("test/tests/baz.stache").then(function(template) {
+		template({
+			test: function(value, scope) {
+				assert.equal(value, "works", "Initial render occurs with can-import already completed.");
+				assert.ok(scope._meta.variable, "Bottom scope is a LetContext.");
+				assert.equal(scope._context._data.bar, "works", "`bar` variable is in the LetContext.");
+				done();
+			}
+		});
+	});
+});
+
 QUnit.test("error messages includes the source", function(assert) {
 	var done = assert.async();
 
@@ -73,7 +88,7 @@ QUnit.test("module info is set when 'options' is missing", function(assert) {
 	var done = assert.async(2);
 
 	tag("fake-import", function fakeImport(el, tagData) {
-		var m = tagData.scope.get("scope.helpers.module");
+		var m = tagData.scope.get("module");
 		assert.ok(m.id.includes("test/module-meta/index"));
 		done();
 	});
@@ -88,7 +103,7 @@ QUnit.test("module info is set when 'options.helpers' exists", function(assert) 
 	var done = assert.async(2);
 
 	tag("fake-import", function fakeImport(el, tagData) {
-		var m = tagData.scope.get("scope.helpers.module");
+		var m = tagData.scope.get("module");
 		assert.ok(m.id.includes("test/module-meta/index"));
 		done();
 	});
