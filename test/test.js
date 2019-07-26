@@ -1,5 +1,3 @@
-var template = require("./template.stache!");
-var stache = require("can-stache");
 var QUnit = require("steal-qunit");
 var loader = require("@loader");
 var clone = require("steal-clone");
