@@ -49,7 +49,7 @@
     "can-stache": "^4.0.0",
     "can-stache-ast": "^1.0.0",
     "can-stache-bindings": "^4.0.0",
-    "can-view-import": "^4.2.2",
+    "can-view-import": "canjs/can-view-import#major",
     "steal-config-utils": "^1.0.0"
   },
   "devDependencies": {
