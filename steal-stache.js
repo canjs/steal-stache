@@ -5,22 +5,32 @@ var loader = require("@loader");
 var addImportSpecifiers = require("steal-config-utils/import-specifiers").addImportSpecifiers;
 
 function template(imports, intermediate, filename){
+	var tagImportNames = JSON.stringify(imports.slice(7));
 	imports = JSON.stringify(imports);
 	intermediate = JSON.stringify(intermediate);
 
-	return "define("+imports+",function(module, assign, stache, mustacheCore, viewImport, bindings){ \n" +
-		"\tstache.addBindings(bindings);\n"+
+	return "define("+imports+",function(module, assign, stache, mustacheCore, Scope, viewImport, bindings){ \n" +
+    "\tstache.addBindings(bindings);\n"+
 		(filename ?
 			"\tvar renderer = stache(" + JSON.stringify(filename) + ", " + intermediate + ");\n" :
 			"\tvar renderer = stache(" + intermediate + ");\n"
 		) +
+		"\tvar tagImports = Array.prototype.slice.call(arguments, 7);\n" +
 		"\treturn function(scope, options, nodeList){\n" +
 		"\t\tvar moduleOptions = assign({}, options);\n" +
-		"\t\tif(moduleOptions.helpers) {\n" +
-		"\t\t\tmoduleOptions.helpers = assign({ module: module }, moduleOptions.helpers);\n" +
-		"\t\t} else {\n" +
-		"\t\t\tmoduleOptions.module = module;\n" +
+		"\t\tvar tagImportMap = " + tagImportNames + ".reduce(function(map, name, index) {\n" +
+		"\t\t\tmap[name] = tagImports[index];\n" +
+		"\t\t\treturn map;\n" +
+		"\t\t}, {});\n" +
+		"\n"+
+		"\t\tif (!(scope instanceof Scope)) { scope = new Scope(scope); }\n" +
+		"\t\tvar variableScope = scope.getScope(function(s) { return s._meta.variable === true });\n" +
+		"\t\tif (!variableScope) {\n" +
+		"\t\t\tscope = scope.addLetContext();\n" +
+		"\t\t\tvariableScope = scope;\n" +
 		"\t\t}\n" +
+		"\t\tassign(variableScope._context, { module: module, tagImportMap: tagImportMap });\n" +
+		"\n" +
 		"\t\treturn renderer(scope, moduleOptions, nodeList);\n" +
 		"\t};\n" +
 	"});";
@@ -75,6 +85,7 @@ function translate(load) {
 			ast.imports, imports
 		);
 
+		ast.imports.unshift("can-view-scope");
 		ast.imports.unshift("can-stache/src/mustache_core");
 		ast.imports.unshift("can-stache");
 		ast.imports.unshift("can-assign");
