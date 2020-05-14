@@ -55,7 +55,7 @@
   "devDependencies": {
     "can-test-helpers": "^1.1.0",
     "can-view-callbacks": "^5.0.0-pre.1",
-    "jshint": "^2.9.4",
+    "jshint": "^2.11.1",
     "steal": "^1.7.0",
     "steal-qunit": "^2.0.0",
     "steal-tools": "^1.0.0",
